@@ -18,6 +18,11 @@ module.exports = (Sequelize, DataTypes) => {
             optionName: {
                 type: DataTypes.STRING,
                 allowNull: false
+            },
+            optionCount: {
+                type: DataTypes.INTEGER,
+                defaultValue: 0,
+                allowNull: true
             }
         },
         {

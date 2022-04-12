@@ -1,22 +1,37 @@
 const db = require("../models");
-const Campaign = db.campaign;
-const Op = db.Sequelize.Op;
+const { question, campaign, answer } = require("../models");
+const association = require("../../server");
 
 exports.create = (req, res) => {
-    if (!req.body.title) {
+    if (!req.body?.title) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
 
-    const campaign = {
+    const newCampaign = {
         title: req.body.title,
         description: req.body.description,
-        noOfQuestions: req.body.noOfQuestions
+        noOfQuestions: req.body.noOfQuestions,
+        questions: req.body.questions
     };
 
-    Campaign.create(campaign)
+    campaign
+        .create(newCampaign, {
+            include: [
+                {
+                    association: association.Questions,
+                    as: "questions",
+                    include: [
+                        {
+                            association: association.Answers,
+                            as: "answers"
+                        }
+                    ]
+                }
+            ]
+        })
         .then((data) => {
             res.send(data);
         })
