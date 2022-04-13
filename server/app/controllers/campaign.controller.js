@@ -80,12 +80,12 @@ exports.update = async (req, res) => {
 
    Promise.all(requests)
       .then((data) => {
-         data.map((response, index) => {
-            if (!response[0][1]) {
-               return res.status(404).send({ message: `Cannot update Campaign. Maybe Question against of ${req.body.questions[index].questionID} was not found!` });
-            }
+         const unresolvedReq = data.map((response, index) => {
+            if (response[0][1] === 0) return index;
          });
-         return res.send({ message: "Campaign was updated successfully." });
+
+         if (!unresolvedReq.filter((e) => e !== undefined).length) res.status(200).send({ message: "Campaign was updated successfully." });
+         else res.status(404).send({ message: `Cannot update Campaign. Maybe Question against of ${req.body.questions[unresolvedReq.filter((e) => e !== undefined)[0]].questionID} was not found!` });
       })
       .catch((err) => res.status(500).send({ message: err.message || "Error updating Campaign with id of " + id }));
 };
