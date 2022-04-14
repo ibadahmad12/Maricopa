@@ -1,0 +1,25 @@
+$body-bg: #fff;
+$txt-color: #fff;
+
+$small-text-size: 14px;
+$heading-text-size: clamp(3rem, 1vw, 6rem);
+$normal-text-size: clamp(1.35rem, 1vw, 5rem);
+
+$normal-text-style: italic;
+$heading-text-style: medium;
+
+$white: #fff;
+$black: #000;
+
+$section-padding: 7rem;
+
+$header-mobile-height: 35rem;
+$header-tablet-height: 30rem;
+$header-shrink-height: 10vh;
+
+$border-radius: 4px;
+
+$mobile-width: 600px;
+$tablet-width: 1024px;
+
+$font-family: "Montserrat", sans-serif;

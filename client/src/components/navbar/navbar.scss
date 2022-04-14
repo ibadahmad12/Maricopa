@@ -1,0 +1,143 @@
+@use "../../scss/" as *;
+
+.navbar-flex {
+   position: fixed;
+   top: 0;
+   min-width: 100vw;
+   z-index: 100;
+   background-color: black;
+   color: white;
+
+   @include flex(row, space-between, center);
+   height: $header-shrink-height;
+   padding: 0 10rem;
+
+   .logo-container {
+      .logo {
+         width: auto;
+         margin-top: 7px;
+         max-width: 65px;
+         max-height: 65px;
+         align-self: center;
+      }
+   }
+
+   ul {
+      list-style: none;
+
+      li {
+         display: inline;
+         margin: 20px 15px;
+         cursor: pointer;
+         font-size: $small-text-size;
+         transition: all 0.2s linear 0.1s;
+         position: relative;
+         text-align: center;
+      }
+   }
+
+   .social-nav-icons {
+      i {
+         padding: 0 1.3rem;
+         height: 30px;
+         width: 40px;
+      }
+   }
+
+   .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 5px;
+      transition: all 0.3s ease;
+      color: white;
+   }
+
+   .hamburger {
+      display: none;
+   }
+
+   .toggle {
+      .stroke-1 {
+         transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .stroke-2 {
+         opacity: 0;
+      }
+
+      .stroke-3 {
+         transform: rotate(45deg) translate(-5px, -6px);
+      }
+   }
+}
+
+@include tablet {
+   .navbar-flex {
+      padding: 0 1rem;
+
+      .logo-container {
+         padding: 0.9rem 2rem;
+         align-self: flex-start;
+         height: 60px;
+         width: 60px;
+      }
+      ul,
+      .social-nav-icons {
+         display: none;
+      }
+
+      .hamburger {
+         align-self: flex-start;
+         padding: 2.6rem 2rem;
+         display: block;
+      }
+   }
+
+   .navbar-mobile-flex {
+      height: $header-tablet-height;
+
+      ul,
+      .social-nav-icons {
+         position: absolute;
+         bottom: 5%;
+         width: 100%;
+      }
+
+      ul {
+         @include flex(column, center, center);
+         bottom: 18%;
+      }
+
+      li,
+      i {
+         animation: translateText 0.5s linear 0.1s forwards;
+         opacity: 0;
+
+         @keyframes translateText {
+            0% {
+               transform: translateY(0px);
+               opacity: 0;
+            }
+
+            100% {
+               opacity: 1;
+               transform: translateY(-7px);
+            }
+         }
+      }
+
+      .social-nav-icons {
+         @include flex(row, center, center);
+      }
+   }
+   @include mobile {
+      .logo {
+         width: 60px;
+         height: 60px;
+      }
+      .navbar-mobile-flex {
+         height: $header-mobile-height;
+      }
+   }
+}

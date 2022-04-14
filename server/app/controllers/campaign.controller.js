@@ -41,7 +41,6 @@ exports.findAll = (req, res) => {
       .findAll({
          include: {
             association: "questions",
-
             include: {
                association: "answers"
             }
@@ -70,7 +69,7 @@ exports.findOne = (req, res) => {
          if (data) res.send(data);
          else res.status(404).send({ message: `Cannot find Campaign with id of ${id}.` });
       })
-      .catch((err) => res.status(500).send({ message: err.message || "Error retrieving Campaign with id of " + id }));
+      .catch((err) => res.status(500).send({ message: err.message ?? "Error retrieving Campaign with id of " + id }));
 };
 
 exports.update = async (req, res) => {
@@ -85,7 +84,10 @@ exports.update = async (req, res) => {
          });
 
          if (!unresolvedReq.filter((e) => e !== undefined).length) res.status(200).send({ message: "Campaign was updated successfully." });
-         else res.status(404).send({ message: `Cannot update Campaign. Maybe Question against of ${req.body.questions[unresolvedReq.filter((e) => e !== undefined)[0]].questionID} was not found!` });
+         else
+            res.status(404).send({
+               message: `Question against of ${req.body.questions[unresolvedReq.filter((e) => e !== undefined)[0]].questionID} was not found!`
+            });
       })
       .catch((err) => res.status(500).send({ message: err.message || "Error updating Campaign with id of " + id }));
 };

@@ -1,0 +1,55 @@
+@use "../../scss/" as *;
+
+.create-question-wrapper {
+   width: 100vw;
+   margin-top: 10vh;
+   height: auto;
+   border: 1px solid black;
+   @include flex(column, center, center);
+   font-family: $font-family;
+
+   h3 {
+      @include heading-text;
+   }
+
+   .create-question-inner {
+      width: 60%;
+      margin: 50px auto;
+      padding: 40px 55px 45px 55px;
+      border-radius: 15px;
+      transition: all 0.3s;
+      border: 1px solid rgb(14, 13, 13);
+
+      @include mobile {
+         max-width: 95%;
+      }
+   }
+
+   .form-group {
+      @include flex(column, center, flex-start, 1rem, 0.5rem);
+
+      label {
+         @include label;
+      }
+
+      &:nth-child(1) label {
+         font-weight: 900;
+      }
+
+      textarea {
+         @include input;
+         height: 100px;
+      }
+
+      .form-group:nth-child(1) {
+         border: 10px solid black;
+         height: 200px;
+      }
+   }
+
+   button {
+      @include button;
+      margin: 20px 0;
+      float: right;
+   }
+}

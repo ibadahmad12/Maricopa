@@ -1,0 +1,57 @@
+@use "../../scss/" as *;
+
+.loading-text {
+   width: 100vw;
+   height: 100vh;
+   font-size: 30px;
+   @include flex(row, center, center);
+}
+
+.campaigns-wrapper {
+   margin: 10vh auto 0;
+   @include flex(row, center, center, 3rem, 1rem);
+   flex-wrap: wrap;
+   width: 95%;
+
+   .single-compaign-card {
+      margin: 1rem 0;
+      flex: 0 1 360px;
+      border: 1px solid black;
+
+      h2,
+      h6 {
+         font-size: 14px;
+         text-align: center;
+         font-weight: 500;
+         border-bottom: 1px solid black;
+         padding: 0.3rem 1rem 0.3rem;
+         text-align: justify;
+         display: -webkit-box;
+         max-width: 100%;
+         -webkit-line-clamp: 6;
+         line-clamp: 6;
+         -webkit-box-orient: vertical;
+         overflow: hidden;
+      }
+
+      h2 {
+         font-size: 22px;
+         font-weight: 700;
+         text-align: center;
+         text-transform: capitalize;
+         cursor: pointer;
+      }
+
+      p {
+         font-size: 15px;
+         text-align: center;
+         font-weight: 500;
+
+         padding: 0.5rem 1rem;
+      }
+
+      p:nth-child(1) {
+         border-bottom: 1px solid black;
+      }
+   }
+}

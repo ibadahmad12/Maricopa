@@ -1,0 +1,41 @@
+@use "../../scss/" as *;
+
+.auth-wrapper {
+   width: 100vw;
+   height: 100vh;
+   @include flex(column, center, center);
+   font-family: $font-family;
+
+   h3 {
+      @include heading-text;
+   }
+
+   .auth-inner {
+      width: 450px;
+      margin: auto;
+      padding: 40px 55px 45px 55px;
+      border-radius: 15px;
+      transition: all 0.3s;
+      box-shadow: 4px 4px 0px 1px rgb(14, 13, 13);
+
+      @include mobile {
+         max-width: 90%;
+      }
+   }
+
+   .form-group {
+      @include flex(column, center, flex-start, 1rem, 0.5rem);
+
+      input {
+         @include input;
+      }
+   }
+
+   label {
+      @include label;
+   }
+
+   button {
+      @include button;
+   }
+}
