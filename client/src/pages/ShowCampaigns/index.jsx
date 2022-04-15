@@ -10,7 +10,12 @@ const ShowCampaign = () => {
       axios.get("/api/campaigns").then(({ data }) => setCampaigns(data));
    }, []);
 
-   if (!campaigns) return <h6 className="loading-text">Loading ...</h6>;
+   if (!campaigns)
+      return (
+         <RootLayout>
+            <h6 className="loading-text">Loading ...</h6>
+         </RootLayout>
+      );
 
    return (
       <>
@@ -28,7 +33,6 @@ const ShowCampaign = () => {
 export default ShowCampaign;
 
 const SingleCampaign = ({ campaign }) => {
-   console.log(campaign);
    return (
       <div className="single-compaign-card">
          <h2>{campaign.title}</h2>

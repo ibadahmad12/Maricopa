@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./create-campaign.scss";
 
-const CreateCampaign = ({ isShowQuestionForm }) => {
+const CreateCampaign = ({ isShowQuestionForm, setNewCampaign, createCampaign }) => {
    const [formValues, setFormValues] = useState({
-      ttitle: "",
+      title: "",
       description: "",
       questionCount: 0
    });
 
    const submitForm = (e) => {
       e.preventDefault();
+      setNewCampaign({ ...formValues, questionCount: parseInt(formValues.questionCount) });
       isShowQuestionForm(true);
    };
 
