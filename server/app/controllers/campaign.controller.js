@@ -72,6 +72,19 @@ exports.findOne = (req, res) => {
       .catch((err) => res.status(500).send({ message: err.message ?? "Error retrieving Campaign with id of " + id }));
 };
 
+exports.findRecent = (_, res) => {
+   campaign
+      .findAll({
+         limit: 1,
+         order: [["scheduleDate", "DESC"]]
+      })
+      .then((data) => {
+         if (data) res.send(data);
+         else res.status(404).send({ message: `No recent campaign found` });
+      })
+      .catch((err) => res.status(500).send({ message: err.message ?? "Error retrieving recent campaign" }));
+};
+
 exports.update = async (req, res) => {
    const requests = req.body.questions.map(
       async ({ questionID, optionSelected }) => await answer.increment({ optionCount: 1 }, { where: { [Op.and]: [{ questionID }, { optionName: optionSelected }] } })
