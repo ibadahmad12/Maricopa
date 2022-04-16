@@ -5,11 +5,8 @@ module.exports = new Sequelize(process.env.DB, process.env.DB_USER, process.env.
    host: process.env.HOST,
    dialect: "mysql",
    operatorsAliases: false,
-
-   pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
+   port: 3306,
+   dialectOptions: {
+      connectTimeout: 60000
    }
 });

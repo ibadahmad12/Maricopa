@@ -1,0 +1,41 @@
+@use "../../scss/" as *;
+
+.home-wrapper {
+   overflow: hidden;
+   img {
+      width: clamp(100vw, 1vw, 100vw);
+      height: clamp(100vh, 1vh, 100vh);
+      object-fit: cover;
+      object-position: center;
+   }
+
+   .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      @include flex(column, center, center, 2rem, 1rem);
+      flex-wrap: wrap;
+
+      h3 {
+         @include heading-text;
+         color: white;
+      }
+
+      .button-wrapper {
+         @include flex(row, center, center, 2rem, 2rem);
+         flex-wrap: wrap;
+         button {
+            @include button();
+            width: clamp(250px, 100px, 250px);
+            font-size: 17px;
+            background-color: transparent;
+         }
+      }
+   }
+   @include mobile {
+      h3,
+      button {
+         padding: 0 2rem;
+      }
+   }
+}

@@ -2,6 +2,8 @@ module.exports = (app) => {
    const campaigns = require("../controllers/campaign.controller.js");
    var router = require("express").Router();
 
+   router.get("/recentCampaign", campaigns.findRecent);
+
    router.get("/", campaigns.findAll);
 
    router.get("/:id", campaigns.findOne);
