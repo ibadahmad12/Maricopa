@@ -1,8 +1,14 @@
 module.exports = (app) => {
-    const campaigns = require("../controllers/campaign.controller.js");
-    var router = require("express").Router();
+   const campaigns = require("../controllers/campaign.controller.js");
+   var router = require("express").Router();
 
-    app.use("/api/campaigns", router);
+   router.get("/", campaigns.findAll);
 
-    router.post("/", campaigns.create);
+   router.get("/:id", campaigns.findOne);
+
+   router.post("/", campaigns.create);
+
+   router.put("/:campaignID", campaigns.update);
+
+   app.use("/api/campaigns", router);
 };
