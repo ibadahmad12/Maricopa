@@ -20,7 +20,7 @@ exports.Answers = db.question.hasMany(db.answer, {
 // db.sequelize.sync({ force: true }).then(() => console.log("Resynced all Tables"));
 
 app.get("/", (req, res) => {
-   res.json({ message: "Welcome to marycopa application." });
+   res.json({ message: "Welcome to maricopa application on EC2 instance." });
 });
 
 app.listen(process.env.PORT || 8080);
