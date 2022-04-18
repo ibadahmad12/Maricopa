@@ -10,7 +10,7 @@ const CreateCampaign = ({ isShowQuestionForm, setNewCampaign, createCampaign }) 
 
    const submitForm = (e) => {
       e.preventDefault();
-      setNewCampaign({ ...formValues, questionCount: parseInt(formValues.questionCount) });
+      setNewCampaign({ ...formValues, noOfQuestions: parseInt(formValues.questionCount) });
       isShowQuestionForm(true);
    };
 

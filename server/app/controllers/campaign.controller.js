@@ -79,7 +79,7 @@ exports.findRecent = (_, res) => {
          order: [["scheduleDate", "DESC"]]
       })
       .then((data) => {
-         if (data) res.send(data);
+         if (data) res.send({ id: data[0].campaignID });
          else res.status(404).send({ message: `No recent campaign found` });
       })
       .catch((err) => res.status(500).send({ message: err.message ?? "Error retrieving recent campaign" }));

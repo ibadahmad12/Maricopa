@@ -22,7 +22,7 @@ const CreateQuestion = ({ newCampaign }) => {
 
    const arrangeToApiFormat = () => {
       let arrangedQs = [];
-      questions.map((prop) => {
+      questions.forEach((prop) => {
          arrangedQs.push({
             statement: prop.questionStatement,
             answers: [
@@ -36,7 +36,7 @@ const CreateQuestion = ({ newCampaign }) => {
       return arrangedQs;
    };
 
-   if (newCampaign?.questionCount === questions.length) {
+   if (newCampaign?.noOfQuestions === questions.length) {
       navigate("/preview", {
          state: {
             data: { ...newCampaign, questions: arrangeToApiFormat() }
@@ -52,73 +52,33 @@ const CreateQuestion = ({ newCampaign }) => {
 
                <div className="form-group">
                   <label className="bolder">Question Description</label>
-                  <textarea
-                     required
-                     rows={5}
-                     type="text"
-                     className="form-control"
-                     placeholder="Enter description"
-                     value={formValues.questionStatement}
-                     onChange={(e) => setFormValues({ ...formValues, questionStatement: e.target.value })}
-                  />
+                  <textarea required placeholder="Enter description" value={formValues.questionStatement} onChange={(e) => setFormValues({ ...formValues, questionStatement: e.target.value })} />
                </div>
 
                <div className="nested-form-group">
                   <div className="form-group">
                      <label>Option A Description</label>
-                     <textarea
-                        required
-                        rows={5}
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter description"
-                        value={formValues.optionAStatement}
-                        onChange={(e) => setFormValues({ ...formValues, optionAStatement: e.target.value })}
-                     />
+                     <textarea required placeholder="Enter description" value={formValues.optionAStatement} onChange={(e) => setFormValues({ ...formValues, optionAStatement: e.target.value })} />
                   </div>
                   <div className="form-group">
                      <label>Option B Description</label>
-                     <textarea
-                        required
-                        rows={5}
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter description"
-                        value={formValues.optionBStatement}
-                        onChange={(e) => setFormValues({ ...formValues, optionBStatement: e.target.value })}
-                     />
+                     <textarea required placeholder="Enter description" value={formValues.optionBStatement} onChange={(e) => setFormValues({ ...formValues, optionBStatement: e.target.value })} />
                   </div>
                </div>
 
                <div className="nested-form-group">
                   <div className="form-group">
                      <label>Option C Description</label>
-                     <textarea
-                        required
-                        rows={5}
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter description"
-                        value={formValues.optionCStatement}
-                        onChange={(e) => setFormValues({ ...formValues, optionCStatement: e.target.value })}
-                     />
+                     <textarea required placeholder="Enter description" value={formValues.optionCStatement} onChange={(e) => setFormValues({ ...formValues, optionCStatement: e.target.value })} />
                   </div>
 
                   <div className="form-group">
                      <label>Option D Description</label>
-                     <textarea
-                        required
-                        rows={5}
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter description"
-                        value={formValues.optionDStatement}
-                        onChange={(e) => setFormValues({ ...formValues, optionDStatement: e.target.value })}
-                     />
+                     <textarea required placeholder="Enter description" value={formValues.optionDStatement} onChange={(e) => setFormValues({ ...formValues, optionDStatement: e.target.value })} />
                   </div>
                </div>
 
-               <button type="submit">{newCampaign?.questionCount - 1 === questions.length ? "Finish" : "Next"}</button>
+               <button type="submit">{newCampaign?.noOfQuestions - 1 === questions.length ? "Preview" : "Next"}</button>
             </form>
          </div>
       </div>

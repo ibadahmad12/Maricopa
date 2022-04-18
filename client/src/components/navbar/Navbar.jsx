@@ -33,8 +33,8 @@ const Navbar = () => {
             <li className="active" onClick={() => navigate("/home")}>
                Home
             </li>
-            <li onClick={() => navigate("/show-campaigns")}>View Campaigns</li>
-            <li onClick={() => navigate("/create-campaign")}>Create Campaign</li>
+            <li onClick={() => navigate("/campaigns")}>View Campaigns</li>
+            <li onClick={() => navigate("/create")}>Create Campaign</li>
 
             <li onClick={() => navigate("/")}>Sign Out</li>
          </ul>

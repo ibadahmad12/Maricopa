@@ -10,8 +10,8 @@ const Home = () => {
          <div className="overlay">
             <h3>Welcome to Maricopa</h3>
             <div className="button-wrapper">
-               <button onClick={() => navigate("/create-campaign")}>Create Campaign</button>
-               <button onClick={() => navigate("/show-campaigns")}>See Analytics</button>
+               <button onClick={() => navigate("/create")}>Create Campaign</button>
+               <button onClick={() => navigate("/campaigns")}>See Analytics</button>
             </div>
          </div>
       </div>

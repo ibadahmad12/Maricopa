@@ -2,7 +2,9 @@
 
 .preview-wrapper {
    margin: 10vh auto 0;
+   position: relative;
    min-height: 88vh;
+
    @include flex(column, center, center, 2rem, 0rem);
 
    width: 95%;
@@ -14,13 +16,41 @@
       align-self: center;
    }
 
+   .campaign-date-scheduler {
+      width: 80%;
+      @include flex(row, center, center, 0, 2rem);
+
+      label {
+         @include label;
+         width: 150px;
+         margin-bottom: 10px;
+      }
+
+      .react-datepicker-wrapper {
+         width: 30%;
+
+         input {
+            @include input;
+         }
+      }
+   }
+
    .single-question-preview {
       margin: 1rem 0;
-      flex: 0 1 660px;
+      flex: 0 1 600px;
+      max-width: 560px;
       border: 1px solid black;
+      min-width: 600px;
+
+      @include mobile {
+         flex: 0 1 90vw;
+         min-width: 90vw;
+         max-width: 90vw;
+      }
 
       h2,
       h4 {
+         display: inline;
          text-align: center;
          font-weight: 700;
          border-bottom: 1px solid black;
@@ -42,6 +72,14 @@
          border: none;
       }
 
+      .edit-icon {
+         position: absolute;
+         right: 10px;
+         top: 7px;
+         color: gray;
+         cursor: pointer;
+      }
+
       .preview-answers {
          @include flex(row, flex-start, center, 0rem, 1rem);
 
@@ -49,12 +87,13 @@
             font-size: 14px;
             text-align: center;
             font-weight: 500;
-            padding: 0.5rem 0.2rem 1rem;
+            padding: 0 0.2rem;
             align-self: center;
+            @include text-ellipsis;
          }
 
          i {
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1rem 0.2rem;
             align-self: center;
          }
       }
@@ -62,7 +101,15 @@
    .button-wrapper {
       margin-bottom: 1rem;
       @include flex(row-reverse, flex-end, center, 1rem, 1rem);
-      width: 50%;
+      width: 40%;
+
+      @include tablet {
+         width: 50%;
+      }
+
+      @include mobile {
+         width: 80%;
+      }
       button {
          @include button;
       }
