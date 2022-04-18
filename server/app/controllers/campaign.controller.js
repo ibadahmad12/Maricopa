@@ -39,6 +39,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
    campaign
       .findAll({
+         order: [["scheduleDate", "DESC"]],
          include: {
             association: "questions",
             include: {
