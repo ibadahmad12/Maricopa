@@ -18,6 +18,7 @@
       border-radius: 15px;
       transition: all 0.3s;
       border: 1px solid rgb(14, 13, 13);
+      background-color: $body-bg;
 
       @include tablet {
          width: 75%;

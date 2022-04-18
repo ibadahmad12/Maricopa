@@ -4,8 +4,7 @@
    width: 100vw;
    min-height: 90vh;
    margin-top: 10vh;
-   height: 90vh;
-   border: 1px solid black;
+   height: auto;
    @include flex(column, center, center);
    font-family: $font-family;
 
@@ -15,7 +14,7 @@
 
    .create-campaign-inner {
       width: 550px;
-      margin: auto;
+      margin: 50px auto;
       padding: 40px 55px 40px 55px;
       border-radius: 15px;
       transition: all 0.3s;

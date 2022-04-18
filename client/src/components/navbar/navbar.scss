@@ -77,10 +77,13 @@
       padding: 0 1rem;
 
       .logo-container {
-         padding: 0.9rem 2rem;
-         align-self: flex-start;
-         height: 60px;
-         width: 60px;
+         padding: 2rem 2rem;
+
+         .logo {
+            align-self: flex-start;
+            height: 50px;
+            width: 50px;
+         }
       }
       ul,
       .social-nav-icons {
@@ -89,7 +92,7 @@
 
       .hamburger {
          align-self: flex-start;
-         padding: 2.6rem 2rem;
+         padding: 2rem 2rem;
          display: block;
       }
    }
@@ -132,10 +135,6 @@
       }
    }
    @include mobile {
-      .logo {
-         width: 60px;
-         height: 60px;
-      }
       .navbar-mobile-flex {
          height: $header-mobile-height;
       }

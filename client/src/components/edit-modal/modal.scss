@@ -1,0 +1,24 @@
+@use "../../scss/" as *;
+
+.modal {
+   position: absolute;
+   inset: 0;
+   z-index: 1000000;
+   animation: scaleIn 0.3s ease-out forwards;
+
+   @keyframes scaleIn {
+      0% {
+         transform: scale(0);
+      }
+
+      100% {
+         transform: scale(1);
+      }
+   }
+}
+
+.overlay {
+   position: absolute;
+   inset: 0;
+   @include overlay;
+}

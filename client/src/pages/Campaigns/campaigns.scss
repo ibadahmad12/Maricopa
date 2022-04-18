@@ -17,6 +17,7 @@
       margin: 1rem 0;
       flex: 0 1 360px;
       border: 1px solid black;
+      max-width: 360px;
 
       h2,
       h6 {
@@ -40,12 +41,14 @@
          text-align: center;
          text-transform: capitalize;
          cursor: pointer;
+         -webkit-line-clamp: 1;
       }
 
       p {
          font-size: 15px;
          text-align: center;
          font-weight: 500;
+         @include text-ellipsis;
 
          padding: 0.5rem 1rem;
       }
