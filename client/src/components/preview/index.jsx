@@ -26,15 +26,19 @@ const Preview = () => {
 
       axios
          .get(`/api/campaigns/date/${parseDate(campaignDate)}`)
-         .then(() => cogoToast.info("Another Campaign is already scheduled on this date. Please choose another date"))
-         .status((err) => {
-            axios
-               .post("/api/campaigns", { ...data, scheduleDate: parseDate(campaignDate) })
-               .then(() => {
-                  cogoToast.success("Campaign created successfully");
-                  navigate("/campaigns");
-               })
-               .catch(({ response: { data } }) => cogoToast.error(data.message));
+         .then(() => cogoToast.error("Another Campaign is already scheduled on this date. Please choose some other date"))
+         .catch(({ response }) => {
+            console.log(response.status, response.data.message);
+            if (response.status === 404) {
+               axios
+                  .post("/api/campaigns", { ...data, scheduleDate: parseDate(campaignDate) })
+                  .then(() => {
+                     cogoToast.success("Campaign created successfully");
+                     navigate("/campaigns");
+                     return;
+                  })
+                  .catch(({ response: { data } }) => cogoToast.error(data.message));
+            } else cogoToast.error(response.data.message);
          });
    };
 
@@ -91,7 +95,7 @@ const SingleQuestionPreview = ({ singleQuestion, index, isShowModal, setEditQues
          </div>
          <h4>{singleQuestion.statement}</h4>
          {singleQuestion.answers.map((option) => (
-            <div className="preview-answers" key={option.statement}>
+            <div className="preview-answers" key={Math.random() * 100}>
                <i>
                   <FaRegCheckCircle size={20} />
                </i>

@@ -25,7 +25,7 @@ const SingleCampaign = () => {
                   <h2>{question.statement}</h2>
 
                   {question.answers.map((answer) => (
-                     <label>
+                     <label key={answer.answerID}>
                         <div className="row">
                            <div className="column">
                               <span className="text">{answer.statement}</span>

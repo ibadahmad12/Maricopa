@@ -23,7 +23,7 @@ const ShowCampaign = () => {
          <RootLayout>
             <div className="campaigns-wrapper">
                {campaigns.map((campaign) => (
-                  <SingleCampaign campaign={campaign} key={campaign.id} />
+                  <SingleCampaign campaign={campaign} key={campaign.campaignID} />
                ))}
             </div>
          </RootLayout>

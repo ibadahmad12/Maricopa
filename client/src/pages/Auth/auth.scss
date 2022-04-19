@@ -16,7 +16,7 @@
       padding: 40px 55px 45px 55px;
       border-radius: 15px;
       transition: all 0.3s;
-      box-shadow: 4px 4px 0px 1px rgb(14, 13, 13);
+      background-color: $primary-color;
 
       @include mobile {
          max-width: 90%;

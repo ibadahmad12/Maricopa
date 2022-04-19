@@ -1,25 +1,22 @@
 import React, { useEffect } from "react";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
-import "./navbar.scss";
 import { useNavigate } from "react-router-dom";
+import "./navbar.scss";
 
 const Navbar = () => {
    const navigate = useNavigate();
 
-   useEffect(() => {
+   const toggleNavbar = () => {
       const burger = document.querySelector(".hamburger");
       const navbar = document.querySelector(".navbar-flex");
 
-      burger?.addEventListener("click", () => {
-         burger.classList.toggle("toggle");
-         navbar.classList.toggle("navbar-mobile-flex");
-      });
-   }, []);
+      burger.classList.toggle("toggle");
+      navbar.classList.toggle("navbar-mobile-flex");
+   };
 
    const closeMobileNav = () => {
       const burger = document.querySelector(".hamburger");
       const navbar = document.querySelector(".navbar-flex");
-
       burger.classList.remove("toggle");
       navbar.classList.remove("navbar-mobile-flex");
    };
@@ -52,7 +49,7 @@ const Navbar = () => {
             </i>
          </div>
 
-         <div className="hamburger">
+         <div className="hamburger" onClick={toggleNavbar}>
             <div className="stroke-1" />
             <div className="stroke-2" />
             <div className="stroke-3" />
