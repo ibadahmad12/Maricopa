@@ -6,6 +6,8 @@ module.exports = (app) => {
 
    router.get("/", campaigns.findAll);
 
+   router.get("/date/:date", campaigns.findByDate);
+
    router.get("/:id", campaigns.findOne);
 
    router.post("/", campaigns.create);
