@@ -1,0 +1,78 @@
+@use "../../scss/" as *;
+
+.poll-wrapper {
+   background: #fff;
+   margin: 10vh auto 2vh;
+   border-radius: 15px;
+   padding: 25px;
+   @include flex(row, center, center, 2rem, 0);
+   flex-wrap: wrap;
+   align-self: center;
+
+   .poll-area {
+      margin: 20px 0 15px 0;
+      flex: 0 1 550px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+      border: 2px solid #e6e6e6;
+
+      padding: 2rem;
+
+      @include mobile {
+         flex: 0 1 90vw;
+         min-width: 90vw;
+         max-width: 90vw;
+      }
+   }
+   h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      display: -webkit-box;
+      max-width: 100%;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-transform: capitalize;
+   }
+
+   .poll-area label {
+      display: block;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      padding: 8px 15px;
+      border: 2px solid #e6e6e6;
+      transition: all 0.2s ease;
+   }
+
+   label .row {
+      display: flex;
+      pointer-events: none;
+      justify-content: space-between;
+
+      .row .column {
+         display: flex;
+         align-items: center;
+      }
+
+      .row span {
+         font-size: 16px;
+         font-weight: 500;
+      }
+   }
+   .progress-wrapper {
+      height: 10px;
+      margin: 8px 0 3px 0;
+      width: 100%;
+      background: #ccc;
+      background: #ccc;
+      border-radius: 30px;
+   }
+
+   .progress {
+      height: 10px;
+      border-radius: 30px;
+      pointer-events: none;
+      background: #6665ee;
+      z-index: 1;
+   }
+}

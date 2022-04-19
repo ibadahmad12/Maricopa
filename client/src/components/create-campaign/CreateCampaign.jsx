@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./create-campaign.scss";
 
-const CreateCampaign = ({ isShowQuestionForm, setNewCampaign, createCampaign }) => {
+const CreateCampaign = ({ isShowQuestionForm, setNewCampaign }) => {
    const [formValues, setFormValues] = useState({
       title: "",
       description: "",

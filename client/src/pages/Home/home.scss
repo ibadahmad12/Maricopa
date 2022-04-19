@@ -9,6 +9,22 @@
       object-position: center;
    }
 
+   span {
+      position: absolute;
+      @include flex(row, center, center);
+      top: 20px;
+      right: 30px;
+      font-size: 20px;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+
+      i {
+         vertical-align: middle;
+         padding: 10px 10px 0px;
+      }
+   }
+
    .overlay {
       position: absolute;
       inset: 0;
@@ -28,7 +44,14 @@
             @include button();
             width: clamp(250px, 100px, 250px);
             font-size: 17px;
-            background-color: transparent;
+            background-color: white;
+            color: black;
+
+            &:hover {
+               background-color: transparent;
+               color: white;
+               border: 1px solid white;
+            }
          }
       }
    }

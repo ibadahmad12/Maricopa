@@ -23,16 +23,22 @@ const Preview = () => {
 
    const saveCampaign = () => {
       setData({ ...data, scheduleDate: parseDate(campaignDate) });
+
       axios
-         .post("/api/campaigns", { ...data, scheduleDate: parseDate(campaignDate) })
-         .then(() => {
-            cogoToast.success("Campaign created successfully");
-            navigate("/campaigns");
-         })
-         .catch(({ response: { data } }) => cogoToast.error(data.message));
+         .get(`/api/campaigns/date/${parseDate(campaignDate)}`)
+         .then(() => cogoToast.info("Another Campaign is already scheduled on this date. Please choose another date"))
+         .status((err) => {
+            axios
+               .post("/api/campaigns", { ...data, scheduleDate: parseDate(campaignDate) })
+               .then(() => {
+                  cogoToast.success("Campaign created successfully");
+                  navigate("/campaigns");
+               })
+               .catch(({ response: { data } }) => cogoToast.error(data.message));
+         });
    };
 
-   const closeModal = (e, updatedQuestion) => {
+   const saveUpdatedValues = (e, updatedQuestion) => {
       e.preventDefault();
       data.questions[editQuestion.index].statement = updatedQuestion.questionStatement;
       data.questions[editQuestion.index].answers[0].statement = updatedQuestion.optionAStatement;
@@ -41,7 +47,7 @@ const Preview = () => {
       data.questions[editQuestion.index].answers[3].statement = updatedQuestion.optionDStatement;
       setData({ ...data, questions: [...data.questions.slice(0, editQuestion.index), data.questions[editQuestion.index], ...data.questions.slice(editQuestion.index + 1)] });
       isShowModal(false);
-      cogoToast.success("Campaign updates successfully");
+      cogoToast.success("Campaign updated successfully");
    };
 
    return (
@@ -61,7 +67,7 @@ const Preview = () => {
                <button onClick={() => navigate("/create")}>Discard All</button>
             </div>
          </div>
-         <Modal showModal={showModal} closeModal={closeModal} editQuestion={editQuestion.question} setEditQuestion={setEditQuestion} />
+         <Modal showModal={showModal} closeModal={() => isShowModal(false)} saveUpdatedValues={saveUpdatedValues} editQuestion={editQuestion.question} setEditQuestion={setEditQuestion} />
       </RootLayout>
    );
 };
