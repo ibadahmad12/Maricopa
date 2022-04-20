@@ -92,11 +92,13 @@ exports.findByDate = (req, res) => {
 exports.findRecent = (_, res) => {
    campaign
       .findAll({
-         limit: 1,
+         where: {
+            scheduleDate: { [Op.lte]: Date.now() }
+         },
          order: [["scheduleDate", "DESC"]]
       })
       .then((data) => {
-         if (data) res.send({ id: data[0].campaignID });
+         if (data) res.send({ id: data[0]?.campaignID });
          else res.status(404).send({ message: `No recent campaign found` });
       })
       .catch((err) => res.status(500).send({ message: err.message ?? "Error retrieving recent campaign" }));

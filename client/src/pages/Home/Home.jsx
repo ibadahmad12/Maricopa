@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { BiLogOut } from "react-icons/bi";
 import "./home.scss";
 
 const Home = () => {
@@ -11,9 +11,9 @@ const Home = () => {
          <div className="overlay">
             <span onClick={() => navigate("/")}>
                <i>
-                  <MdOutlineKeyboardBackspace size={25} />
+                  <BiLogOut size={28} />
                </i>
-               Back
+               Sign Out
             </span>
             <h3>Welcome to Maricopa</h3>
             <div className="button-wrapper">

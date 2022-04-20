@@ -14,7 +14,7 @@ const SingleCampaign = () => {
    const getOptionStats = (option, totalCount) => {
       let totalSelections = 0;
       totalCount.map((option) => (totalSelections = totalSelections + option.optionCount));
-      return totalSelections === 0 ? 0 : parseFloat(option / totalSelections).toFixed(1) * 100;
+      return totalSelections === 0 ? 0 : +((option / totalSelections) * 100).toPrecision(3);
    };
 
    return (
