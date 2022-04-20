@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "../create-questions/create-question.scss";
 import "./modal.scss";
 
-const Modal = ({ closeModal, showModal, editQuestion }) => {
+const Modal = ({ closeModal, showModal, editQuestion, saveUpdatedValues }) => {
    const [formValues, setFormValues] = useState({
       questionStatement: "",
       optionAStatement: "",
@@ -36,7 +36,9 @@ const Modal = ({ closeModal, showModal, editQuestion }) => {
             <div className="overlay" />
             <div className="modal create-question-wrapper">
                <div className="create-question-inner">
-                  <form onSubmit={(e) => closeModal(e, formValues)}>
+                  <span onClick={closeModal}>x</span>
+
+                  <form onSubmit={(e) => saveUpdatedValues(e, formValues)}>
                      <div className="form-group">
                         <label className="bolder">Question Description</label>
                         <textarea placeholder="Enter description" value={formValues.questionStatement} onChange={(e) => setFormValues({ ...formValues, questionStatement: e.target.value })} />

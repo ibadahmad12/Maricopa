@@ -3,16 +3,34 @@
 .home-wrapper {
    overflow: hidden;
    img {
-      width: clamp(100vw, 1vw, 100vw);
-      height: clamp(100vh, 1vh, 100vh);
+      width: clamp(100vw, 0px, 100vw);
+      height: clamp(100vh, 0px, 100vh);
       object-fit: cover;
       object-position: center;
+      overflow: hidden;
+   }
+
+   span {
+      position: absolute;
+      @include flex(row, center, center);
+      top: 20px;
+      right: 30px;
+      font-size: 20px;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+
+      i {
+         vertical-align: middle;
+         padding: 10px 10px 0px;
+      }
    }
 
    .overlay {
       position: absolute;
       inset: 0;
       background-color: rgba(0, 0, 0, 0.8);
+      height: clamp(100vh, 0px, 100vh);
       @include flex(column, center, center, 2rem, 1rem);
       flex-wrap: wrap;
 
@@ -28,7 +46,15 @@
             @include button();
             width: clamp(250px, 100px, 250px);
             font-size: 17px;
-            background-color: transparent;
+            background-color: $primary-color;
+            color: black;
+            border: none;
+
+            &:hover {
+               background-color: transparent;
+               color: white;
+               border: 1px solid white;
+            }
          }
       }
    }

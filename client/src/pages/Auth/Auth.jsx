@@ -6,8 +6,8 @@ const Auth = () => {
    const navigate = useNavigate();
 
    const [formValues, setFormValues] = useState({
-      email: "ibad@gmai.com",
-      password: "123456"
+      email: "dev@gmail.com",
+      password: "cm&d123456"
    });
 
    const submitForm = (e) => {
