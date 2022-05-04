@@ -41,6 +41,7 @@
       max-width: 560px;
       border: 1px solid black;
       min-width: 600px;
+      min-height: 280px;
 
       @include mobile {
          flex: 0 1 90vw;
@@ -60,8 +61,8 @@
          text-transform: capitalize;
          display: -webkit-box;
          max-width: 100%;
-         -webkit-line-clamp: 6;
-         line-clamp: 6;
+         -webkit-line-clamp: 3;
+         line-clamp: 3;
          -webkit-box-orient: vertical;
          overflow: hidden;
       }

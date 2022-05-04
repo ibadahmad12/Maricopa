@@ -16,8 +16,8 @@
       .logo {
          width: auto;
          margin-top: 7px;
-         max-width: 65px;
-         max-height: 65px;
+         max-width: 170px;
+         height: auto;
          align-self: center;
       }
    }
@@ -37,11 +37,6 @@
    }
 
    .social-nav-icons {
-      i {
-         padding: 0 1.3rem;
-         height: 30px;
-         width: 40px;
-      }
    }
 
    .hamburger div {
@@ -78,12 +73,10 @@
 
       .logo-container {
          align-self: flex-start;
-         padding: 0.5rem 2rem;
+         padding: 2rem 2rem;
 
          .logo {
             align-self: flex-start;
-            height: 60px;
-            width: 60px;
          }
       }
       ul,
@@ -93,7 +86,7 @@
 
       .hamburger {
          align-self: flex-start;
-         padding: 2.3rem 2rem;
+         padding: 2.5rem 2rem;
          display: block;
       }
    }
@@ -110,7 +103,7 @@
 
       ul {
          @include flex(column, center, center);
-         bottom: 18%;
+         bottom: 0%;
       }
 
       li,

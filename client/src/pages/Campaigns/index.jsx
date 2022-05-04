@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import RootLayout from "../../RootLayout";
+import RootLayout from "../../Layout/RootLayout";
 import "./campaigns.scss";
 
 const ShowCampaign = () => {
    const [campaigns, setCampaigns] = useState(null);
 
    useEffect(() => {
-      axios.get("/api/campaigns").then(({ data }) => setCampaigns(data));
+      axios.get("https://maricopa-surveys.herokuapp.com/api/campaigns").then(({ data }) => setCampaigns(data));
    }, []);
 
    if (!campaigns)
@@ -50,10 +50,11 @@ const SingleCampaign = ({ campaign }) => {
             {campaign.title}
          </h2>
          <h6>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+            {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
             galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
             was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
-            of Lorem Ipsum.
+            of Lorem Ipsum. */}
+            {campaign.description}
          </h6>
          <p>
             Scheduled on <strong>{campaign.scheduleDate.slice(0, 10)}</strong>

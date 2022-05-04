@@ -39,6 +39,21 @@
          color: white;
       }
 
+      img {
+         position: absolute;
+         top: 20px;
+         width: 100vw;
+         @include flex(eow, center, center);
+         width: 280px;
+         margin-top: 7px;
+         max-width: 280px;
+         height: auto;
+
+         @media (max-width: 900px) {
+            margin-top: 100px;
+         }
+      }
+
       .button-wrapper {
          @include flex(row, center, center, 2rem, 2rem);
          flex-wrap: wrap;

@@ -10,7 +10,7 @@ const CreateCampaign = ({ isShowQuestionForm, setNewCampaign }) => {
 
    const submitForm = (e) => {
       e.preventDefault();
-      setNewCampaign({ ...formValues, noOfQuestions: parseInt(formValues.questionCount) });
+      setNewCampaign({ title: formValues.title, description: formValues.description, noOfQuestions: parseInt(formValues.questionCount) });
       isShowQuestionForm(true);
    };
 
@@ -18,15 +18,15 @@ const CreateCampaign = ({ isShowQuestionForm, setNewCampaign }) => {
       <div className="create-campaign-wrapper">
          <div className="create-campaign-inner">
             <form onSubmit={submitForm}>
-               <h3>Create Campaign</h3>
+               <h3>Create Survey</h3>
 
                <div className="form-group">
-                  <label>Campaign Title</label>
+                  <label>Survey Title</label>
                   <input required type="text" className="form-control" placeholder="Enter title" value={formValues.title} onChange={(e) => setFormValues({ ...formValues, title: e.target.value })} />
                </div>
 
                <div className="form-group">
-                  <label>Campaign Description</label>
+                  <label>Survey Description</label>
                   <textarea
                      required
                      rows={5}
