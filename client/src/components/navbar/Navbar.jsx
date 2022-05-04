@@ -30,24 +30,13 @@ const Navbar = () => {
             <li className="active" onClick={() => navigate("/home")}>
                Home
             </li>
-            <li onClick={() => navigate("/campaigns")}>View Campaigns</li>
-            <li onClick={() => navigate("/create")}>Create Campaign</li>
+            <li onClick={() => navigate("/campaigns")}>View Surveys</li>
+            <li onClick={() => navigate("/create")}>Create Survey</li>
 
             <li onClick={() => navigate("/")}>Sign Out</li>
          </ul>
 
-         <div className="social-nav-icons">
-            <i>
-               <a href="https://twitter.com/SoulZ_NFT" target="_blank" rel="noreferrer">
-                  <FaTwitter size={23} />
-               </a>
-            </i>
-            <i>
-               <a href="https://www.instagram.com/accounts/login/?next=/soulz_nft/" target="_blank" rel="noreferrer">
-                  <FaInstagram size={23} />
-               </a>
-            </i>
-         </div>
+         <div className="social-nav-icons"></div>
 
          <div className="hamburger" onClick={toggleNavbar}>
             <div className="stroke-1" />

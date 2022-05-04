@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Inputs from "../OptionInputs";
 import "./create-question.scss";
 
 const CreateQuestion = ({ newCampaign }) => {
@@ -16,7 +17,13 @@ const CreateQuestion = ({ newCampaign }) => {
    const submitForm = (e) => {
       e.preventDefault();
       setQuestions((prevQuestions) => [...prevQuestions, formValues]);
-      setFormValues({ questionStatement: "", optionAStatement: "", optionBStatement: "", optionCStatement: "", optionDStatement: "" });
+      setFormValues({
+         questionStatement: "",
+         optionAStatement: "",
+         optionBStatement: "",
+         optionCStatement: "",
+         optionDStatement: ""
+      });
       window.scrollTo(0, 0);
    };
 
@@ -36,6 +43,10 @@ const CreateQuestion = ({ newCampaign }) => {
       return arrangedQs;
    };
 
+   const handleQuestionStatementChange = (e) => {
+      if (e.target.value.length <= 300) setFormValues({ ...formValues, [e.target.name]: e.target.value });
+   };
+
    if (newCampaign?.noOfQuestions === questions.length) {
       navigate("/preview", {
          state: {
@@ -51,32 +62,17 @@ const CreateQuestion = ({ newCampaign }) => {
                <h3>Question No # {questions.length + 1}</h3>
 
                <div className="form-group">
-                  <label className="bolder">Question Description</label>
-                  <textarea required placeholder="Enter description" value={formValues.questionStatement} onChange={(e) => setFormValues({ ...formValues, questionStatement: e.target.value })} />
+                  <label className="bolder">Survey Description</label>
+                  <textarea
+                     required
+                     placeholder="Enter description (< 300 characters)"
+                     value={formValues.questionStatement}
+                     name="questionStatement"
+                     onChange={(e) => handleQuestionStatementChange(e)}
+                  />
                </div>
 
-               <div className="nested-form-group">
-                  <div className="form-group">
-                     <label>Option A Description</label>
-                     <textarea required placeholder="Enter description" value={formValues.optionAStatement} onChange={(e) => setFormValues({ ...formValues, optionAStatement: e.target.value })} />
-                  </div>
-                  <div className="form-group">
-                     <label>Option B Description</label>
-                     <textarea required placeholder="Enter description" value={formValues.optionBStatement} onChange={(e) => setFormValues({ ...formValues, optionBStatement: e.target.value })} />
-                  </div>
-               </div>
-
-               <div className="nested-form-group">
-                  <div className="form-group">
-                     <label>Option C Description</label>
-                     <textarea required placeholder="Enter description" value={formValues.optionCStatement} onChange={(e) => setFormValues({ ...formValues, optionCStatement: e.target.value })} />
-                  </div>
-
-                  <div className="form-group">
-                     <label>Option D Description</label>
-                     <textarea required placeholder="Enter description" value={formValues.optionDStatement} onChange={(e) => setFormValues({ ...formValues, optionDStatement: e.target.value })} />
-                  </div>
-               </div>
+               <Inputs formValues={formValues} setFormValues={setFormValues} />
 
                <button type="submit">{newCampaign?.noOfQuestions - 1 === questions.length ? "Preview" : "Next"}</button>
             </form>

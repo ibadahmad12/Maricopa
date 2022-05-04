@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import RootLayout from "../../RootLayout";
-import CreateCampaign from "../../components/create-campaign/CreateCampaign";
-import CreateQuestion from "../../components/create-questions/CreateQuestion";
+import RootLayout from "../../Layout/RootLayout";
+import CreateCampaign from "../../components/CreateCampaign/CreateCampaign";
+import CreateQuestion from "../../components/CreateQuestions/CreateQuestion";
 
 const Campaign = () => {
    const [showQuestionForm, isShowQuestionForm] = useState(false);
@@ -11,7 +11,11 @@ const Campaign = () => {
       <>
          <RootLayout>
             {!showQuestionForm ? (
-               <CreateCampaign isShowQuestionForm={isShowQuestionForm} newCampaign={newCampaign} setNewCampaign={setNewCampaign} />
+               <CreateCampaign
+                  isShowQuestionForm={isShowQuestionForm}
+                  newCampaign={newCampaign}
+                  setNewCampaign={setNewCampaign}
+               />
             ) : (
                <CreateQuestion isShowQuestionForm={isShowQuestionForm} newCampaign={newCampaign} />
             )}

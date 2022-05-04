@@ -1,0 +1,101 @@
+@use "../../scss/" as *;
+
+.campaign-details-wrapper {
+   margin: 15vh auto 2vh;
+   font-weight: 500;
+
+   h2 {
+      text-align: center;
+   }
+
+   .poll-wrapper {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      @include flex(row, center, center, 2rem, 0);
+      flex-wrap: wrap;
+      align-self: center;
+
+      .poll-area {
+         margin: 20px 0 15px 0;
+         flex: 0 1 550px;
+         min-height: 460px;
+         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+         border: 2px solid #e6e6e6;
+         padding: 2rem;
+         @include mobile {
+            flex: 0 1 90vw;
+            min-width: 90vw;
+            max-width: 90vw;
+         }
+      }
+      h2 {
+         border: 1px solid black;
+         margin-bottom: 10px;
+         font-size: 20px;
+         display: -webkit-box;
+         max-width: 100%;
+         -webkit-box-orient: vertical;
+         -webkit-line-clamp: 2;
+         line-clamp: 2;
+         overflow: hidden;
+         text-transform: capitalize;
+         min-height: 60px;
+         max-height: 60px;
+         @include flex(flex, center, center);
+      }
+
+      .poll-area label {
+         display: block;
+         margin-bottom: 10px;
+         border-radius: 5px;
+         padding: 8px 15px;
+         border: 2px solid #e6e6e6;
+         transition: all 0.2s ease;
+         text-transform: capitalize;
+      }
+
+      label .row {
+         display: flex;
+         pointer-events: none;
+         justify-content: space-between;
+         margin-bottom: 15px;
+
+         .column {
+            display: flex;
+            align-items: center;
+
+            .text {
+               display: -webkit-box;
+               max-width: 100%;
+               -webkit-line-clamp: 1;
+               line-clamp: 1;
+               -webkit-box-orient: vertical;
+               overflow: hidden;
+               margin-right: 10px;
+            }
+         }
+
+         span {
+            font-size: 16px;
+            font-weight: 500;
+         }
+      }
+      .progress-wrapper {
+         height: 10px;
+         margin: 8px 0 3px 0;
+         width: 100%;
+         background: #ccc;
+         background: #ccc;
+         border-radius: 30px;
+      }
+
+      .progress {
+         height: 10px;
+         border-radius: 30px;
+         pointer-events: none;
+         background: $secondary-color;
+         z-index: 1;
+      }
+   }
+}

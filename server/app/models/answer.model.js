@@ -8,11 +8,11 @@ module.exports = (Sequelize, DataTypes) => {
             primaryKey: true
          },
          statement: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(),
             allowNull: true,
             default: "",
             validate: {
-               is: /^.{1,300}$/i
+               len: [0, 200]
             }
          },
          optionName: {

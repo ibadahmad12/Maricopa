@@ -9,15 +9,17 @@ const Home = () => {
       <div className="home-wrapper">
          <img src="/pexels-home-bg.jpg" alt="home-img" />
          <div className="overlay">
+            <img src="/home_bg.png" alt="logo" />
             <span onClick={() => navigate("/")}>
                <i>
                   <BiLogOut size={28} />
                </i>
                Sign Out
             </span>
-            <h3>Welcome to Maricopa</h3>
+
+            <h3>Phi Theta Kappa AR App Survey Creation Tool</h3>
             <div className="button-wrapper">
-               <button onClick={() => navigate("/create")}>Create Campaign</button>
+               <button onClick={() => navigate("/create")}>Create Survey</button>
                <button onClick={() => navigate("/campaigns")}>See Analytics</button>
             </div>
          </div>

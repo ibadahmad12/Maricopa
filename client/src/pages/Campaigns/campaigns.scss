@@ -8,7 +8,7 @@
 }
 
 .campaigns-wrapper {
-   margin: 10vh auto 0;
+   margin: 15vh auto 5vh;
    @include flex(row, center, center, 3rem, 1rem);
    flex-wrap: wrap;
    width: 95%;
@@ -33,6 +33,10 @@
          line-clamp: 6;
          -webkit-box-orient: vertical;
          overflow: hidden;
+      }
+
+      h6 {
+         min-height: 135px;
       }
 
       h2 {

@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Auth from "./pages/Auth/Auth";
-import Home from "./pages/Home/Home";
-import Campaign from "./pages/CreateCampaigns/index";
-import ShowCampaign from "./pages/Campaigns/index";
-import Preview from "./components/preview/index";
-import SingleCampaign from "./components/single-campaign/index";
+import Auth from "./Pages/Auth/Auth";
+import Home from "./Pages/Home/Home";
+import Campaign from "./Pages/CreateCampaigns";
+import ShowCampaign from "./Pages/Campaigns";
+import Preview from "./Pages/Preview";
+import SingleCampaign from "./components/SingleCampaign";
 
 const App = () => {
    return (

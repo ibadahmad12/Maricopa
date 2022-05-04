@@ -3,11 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
 import axios from "axios";
-import RootLayout from "../../RootLayout";
+import RootLayout from "../../Layout/RootLayout";
 import cogoToast from "cogo-toast";
 import DatePicker from "react-datepicker";
+import Modal from "../../components/EditModal/Modal";
 import "./preview.scss";
-import Modal from "../edit-modal/Modal";
 
 const Preview = () => {
    const location = useLocation();
@@ -17,21 +17,21 @@ const Preview = () => {
    const [editQuestion, setEditQuestion] = useState({ question: null, index: 0 });
    const [campaignDate, setCampaignDate] = useState(new Date());
 
-   const parseDate = (date) => {
-      return new Date(date).getFullYear() + "-" + (new Date(date).getMonth() + 1) + "-" + new Date(date).getDate();
-   };
-
    const saveCampaign = () => {
       setData({ ...data, scheduleDate: parseDate(campaignDate) });
 
       axios
-         .get(`/api/campaigns/date/${parseDate(campaignDate)}`)
-         .then(() => cogoToast.error("Another Campaign is already scheduled on this date. Please choose some other date"))
+         .get(`https://maricopa-surveys.herokuapp.com/api/campaigns/date/${parseDate(campaignDate)}`)
+         .then(() =>
+            cogoToast.error("Another Campaign is already scheduled on this date. Please choose some other date")
+         )
          .catch(({ response }) => {
-            console.log(response.status, response.data.message);
             if (response.status === 404) {
                axios
-                  .post("/api/campaigns", { ...data, scheduleDate: parseDate(campaignDate) })
+                  .post("https://maricopa-surveys.herokuapp.com/api/campaigns", {
+                     ...data,
+                     scheduleDate: parseDate(campaignDate)
+                  })
                   .then(() => {
                      cogoToast.success("Campaign created successfully");
                      navigate("/campaigns");
@@ -42,6 +42,10 @@ const Preview = () => {
          });
    };
 
+   const parseDate = (date) => {
+      return new Date(date).getFullYear() + "-" + (new Date(date).getMonth() + 1) + "-" + new Date(date).getDate();
+   };
+
    const saveUpdatedValues = (e, updatedQuestion) => {
       e.preventDefault();
       data.questions[editQuestion.index].statement = updatedQuestion.questionStatement;
@@ -49,7 +53,14 @@ const Preview = () => {
       data.questions[editQuestion.index].answers[1].statement = updatedQuestion.optionBStatement;
       data.questions[editQuestion.index].answers[2].statement = updatedQuestion.optionCStatement;
       data.questions[editQuestion.index].answers[3].statement = updatedQuestion.optionDStatement;
-      setData({ ...data, questions: [...data.questions.slice(0, editQuestion.index), data.questions[editQuestion.index], ...data.questions.slice(editQuestion.index + 1)] });
+      setData({
+         ...data,
+         questions: [
+            ...data.questions.slice(0, editQuestion.index),
+            data.questions[editQuestion.index],
+            ...data.questions.slice(editQuestion.index + 1)
+         ]
+      });
       isShowModal(false);
       cogoToast.success("Campaign updated successfully");
    };
@@ -59,7 +70,13 @@ const Preview = () => {
          <div className="preview-wrapper">
             <div className="preview-inner-wrapper">
                {data?.questions.map((singleQuestion, index) => (
-                  <SingleQuestionPreview singleQuestion={singleQuestion} key={index} index={index} isShowModal={isShowModal} setEditQuestion={setEditQuestion} />
+                  <SingleQuestionPreview
+                     singleQuestion={singleQuestion}
+                     key={index}
+                     index={index}
+                     isShowModal={isShowModal}
+                     setEditQuestion={setEditQuestion}
+                  />
                ))}
             </div>
             <div className="campaign-date-scheduler">
@@ -71,7 +88,13 @@ const Preview = () => {
                <button onClick={() => navigate("/create")}>Discard All</button>
             </div>
          </div>
-         <Modal showModal={showModal} closeModal={() => isShowModal(false)} saveUpdatedValues={saveUpdatedValues} editQuestion={editQuestion.question} setEditQuestion={setEditQuestion} />
+         <Modal
+            showModal={showModal}
+            closeModal={() => isShowModal(false)}
+            saveUpdatedValues={saveUpdatedValues}
+            editQuestion={editQuestion.question}
+            setEditQuestion={setEditQuestion}
+         />
       </RootLayout>
    );
 };
